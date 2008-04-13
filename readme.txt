@@ -1,0 +1,22 @@
+=== Random YouTube Video ===
+Contributors: Shobba
+Tags: youtube, random, video
+Requires at least: 2.3
+Tested up to: 2.5
+Stable tag: trunk
+
+This sidebar widget shows a random youtube video from your own list.
+
+== Description ==
+
+This plugin adds a sidebar widget to your wordpress, which shows a random youtube video with own title from a list which you can manage in the admin area.
+
+== Installation ==
+
+1. Upload `youtubevideo.php` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Manage your video list at 'Options -> Manage YouTube Videos'
+4. Put the new widget into your sidebar
+
+== Changelog ==
+* 1.0 first release. Widget can be used, videos can be managed
