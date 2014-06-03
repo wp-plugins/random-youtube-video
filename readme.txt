@@ -1,5 +1,5 @@
 === Random YouTube Video ===
-Contributors: Shobba, zigvt85, and roycegracie
+Contributors: Shobba, zigvt85, roycegracie
 Tags: youtube, random, video, widget, sidebar
 Requires at least: 2.3
 Tested up to: 3.9
