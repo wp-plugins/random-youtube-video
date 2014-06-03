@@ -1,11 +1,14 @@
 <?php
 /*
 Plugin Name: Random YouTube Video
-Plugin URI: http://web8.charlie316.server4you.de/wp/?page_id=216
+Plugin URI: http://wordpress.org/plugins/random-youtube-video/
 Description: This widget shows a random youtube video from your video list in your wordpress sidebar
-Author: Shobba
-Author URI: http://blog.shobba.de.vu
-Version: 1.5
+Download URL: http://www.soslidesigns.com/files/random-youtube-videos.zip
+Author: Shobba, zeevm.co.il, zigvt85
+Author Notes: Community patch by the authors above fixed from using object to iframe and menu glitch where
+the menu was going under the video if close enough.
+Author URI: http://wordpress.org/plugins/random-youtube-video/
+Version: 1.6
 License: GPL compatible
 */
 
@@ -80,7 +83,7 @@ function ryv_adminpage(){
 				<table width="80%" cellspacing="2" cellpadding="3" class="editform" id="greattable">
 					<tr style="background-color:#464646;color:white;">
 						<th style="text-align: center;">Video Title (Optional)</th>
-						<th style="text-align: center;">Video URL (From Embed Code)<br>(looks like: http://www.youtube.com/v/Ldn_H8A6Aac)</th>
+						<th style="text-align: center;">Video ID (From Embed Code)<br>(looks like: j9c5N2HzaHY)</th>
 					</tr>
 					<?
 					$vids = $wpdb->get_results("SELECT * FROM `".$wpdb->prefix."randomyoutube` ORDER BY id");
@@ -107,7 +110,7 @@ function ryv_adminpage(){
 }
 
 function ryv_adminmenu() {
-    add_submenu_page('options-general.php', 'Random YouTube Video &raquo; Manage Videos', 'Manage Youtube Videos', 10, __FILE__, 'ryv_adminpage');
+    add_submenu_page('options-general.php', 'Random YouTube Video &raquo; Manage Videos', 'Random Youtube Videos', 10, __FILE__, 'ryv_adminpage');
 }
 add_action('admin_menu', 'ryv_adminmenu');
 
@@ -120,7 +123,7 @@ function ryv_widget(){
 		extract($args);
 		$options = get_option('ryv_mywidget');
 
-		$title = $options['title']; $width = $options['width'];
+		$title = $options['title']; $autoplay = $options['autoplay']; $width = $options['width'];
 		if($width==0 or $width==''){$width=170;} $height = $width/1.197; $height=round($height);
 
 		echo $before_widget;
@@ -132,10 +135,10 @@ function ryv_widget(){
 		$video = $wpdb->get_results("SELECT * FROM `".$wpdb->prefix."randomyoutube` ORDER BY RAND() LIMIT 1");
 		$url=$video[0]->url; $name=$video[0]->titel;
 		?>
-		<div align="center">
-			<font style="font-size:10px;"><? echo $name; ?><br></font>
-			<object width="<?=$width?>" height="<?=$height?>"><param name="movie" value="<? echo $url; ?>"></param><param name="wmode" value="transparent"></param><embed src="<? echo $url; ?>" type="application/x-shockwave-flash" wmode="transparent" width="<?=$width?>" height="<?=$height?>"></embed></object>
-			<? if($options['link']==1){?><br><a href="http://web8.charlie316.server4you.de/wp/?page_id=216" target="_BLANK">RYV plugin by Shobba</a><?}?>
+		<div align="left">
+			<font style="font-size:10px;"><? echo $name; ?><br /></font>
+			<iframe width="<?=$width?>" height="<?=$height?>" src="//www.youtube.com/embed/<? echo $url; ?>?<?=$autoplay?>" frameborder="0" allowfullscreen></iframe>
+			<? if($options['link']==1){?><br /><a href="http://wordpress.org/plugins/random-youtube-video/" target="_blank">RYV plugin by Shobba</a><?}?>
 		</div>
 
 <?		}
@@ -145,6 +148,7 @@ function ryv_widget(){
 		$options = $newoptions = get_option('ryv_mywidget');
 		if ( $_POST['ryv_submit'] ) {
 			$newoptions['title'] = strip_tags(stripslashes($_POST['ryv_title']));
+			$newoptions['autoplay'] = strip_tags(stripslashes($_POST['ryv_autoplay']));
 			$newoptions['width'] = strip_tags(stripslashes($_POST['ryv_width']));
 			$newoptions['link'] = strip_tags(stripslashes($_POST['ryv_link']));
 		}
@@ -153,6 +157,7 @@ function ryv_widget(){
 			update_option('ryv_mywidget', $options);
 		}
 		$title = htmlspecialchars($options['title'], ENT_QUOTES);
+		$autoplay = htmlspecialchars($options['autoplay'], ENT_QUOTES);
 		$width = htmlspecialchars($options['width'], ENT_QUOTES);
 		?>
 		<p>
@@ -161,10 +166,19 @@ function ryv_widget(){
 			</label>
 		</p>
 		<p>
-			<label for="ryv_width"><?php _e('Width of video:'); ?>
-				<input style="width: 50px;" id="ryv_width" name="ryv_width" type="text" value="<?=$options['width']; ?>" /> px <small>(standard: 170)</small>
+			<label for="ryv_autoplay"><?php _e('AutoPlay:'); ?>
+				<input style="width: 200px;" id="ryv_autoplay" name="ryv_autoplay" type="text" value="<?=$options['autoplay']; ?>" />
+				<br />
+				Add the following to enable autoplay <strong> rel=0&autoplay=1 </strong>
+				<br />
+				To disable it just remove it and save and repeat! 			
 			</label>
 		</p>
+		<p>
+			<label for="ryv_width"><?php _e('Width of video:'); ?>
+				<input style="width: 50px;" id="ryv_width" name="ryv_width" type="text" value="<?=$options['width']; ?>" /> ( px )
+			</label>
+		</p>		
 		<p>
 			<label for="ryv_link">
 				<input type="Checkbox" name="ryv_link" id="ryv_link" value="1" <? if($options['link']==1){echo "checked";}?>> Show link to plugin?
@@ -186,6 +200,7 @@ function ryv_install(){
 	  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	  url TEXT NOT NULL,
 	  titel TEXT NOT NULL,
+	  autoplay TEXT NOT NULL,
 	  UNIQUE KEY id (id)
 	);";
 
