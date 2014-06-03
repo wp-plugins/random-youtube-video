@@ -13,6 +13,8 @@ This plugin adds a sidebar widget to your wordpress, which shows a random youtub
 
 I hope you'll enjoy it, feel free to leave a comment :-)
 
+Demo: http://themes.soslidesigns.com
+
 This plugin is mainly community drivin now any fixes or future patches are up to you. Unless
 we can fix them. I am just keeping this plugin alive because its really good and it was pretty
 basic to keep it up to date. Not sure what happend to the original owner. But if he comes back
@@ -29,6 +31,7 @@ he is more then welcome to take over again!
 
 1. This is the widget in your sidebar
 2. The page in your admin area
+3. Adds widget to sidebar and enables AutoPlay feature or not!
 
 == Changelog ==
 * 1.0 - first release. Widget can be used, videos can be managed
