@@ -24,7 +24,7 @@ he is more then welcome to take over again!
 
 1. Upload `youtubevideo.php` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Manage your video list at 'Options -> Manage YouTube Videos'
+3. Manage your video list at 'Options -> Random YouTube Videos'
 4. Put the new widget into your sidebar
 
 == Screenshots ==
