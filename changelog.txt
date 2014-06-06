@@ -4,6 +4,8 @@ File Download Most Recent Version: soslidesigns.com/files/random-youtube-videos.
 Added AutoPlay feature to the widget not the manager conflicts with everything for some reason.
 Changed menu name to Random Youtube Videos instead of Add Random Youtube Videos just to make it shorter.
 
+1.8 - Fixed the widget now it is more modernized which means you can add as many widgets as you want to your sidebar! Community 
+suggestion! This has been tested in Firefox and IE and with the latest wordpress!
 
 ToDo List
 Make everything in CSS/DIV design instead of tables.
@@ -44,6 +46,9 @@ zeevm.co.il http://wordpress.org/support/profile/roycegracie
 zigvt85 http://wordpress.org/support/profile/zigvt85
 - I did the menu fix found via google search <? echo $url; ?>/?wmode=transparent
 I also did some minor changes to names to make stuff more clear!
+You can also check out my design website if you need a wordpress website we love doing those!
+We are affordable and we keep them clean and simple or stylish whatever you like!
+www.soslidesigns.com
 
 Shobo http://profiles.wordpress.org/shobba/
 - He is the original creator of this plugin I have

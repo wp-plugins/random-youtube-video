@@ -32,6 +32,11 @@ he is more then welcome to take over again!
 1. This is the widget in your sidebar
 2. The page in your admin area
 3. Adds widget to sidebar and enables AutoPlay feature or not!
+4. Old widget you can only drag to the sidebar once!
+5. Old widget you can only drag to the sidebar once proof!
+6. New widget you can drag over multiple times!
+7. New widget proof you can have multiple Random YT Video widgets!
+8. Published widget profile that show 2 at time or more!
 
 == Changelog ==
 * 1.0 - first release. Widget can be used, videos can be managed
@@ -43,3 +48,5 @@ he is more then welcome to take over again!
 * 1.5 - Now you can choose the width of the displayed video and (optionally) put a link to my blog below this video
 * 1.7 - Fixed language files and patched the broken youtube thanks to roycegracie! Also added the option to the youtube widget
 were the user can add an option to enable AutoPlay or not. Tested in Firefox and IE!
+* 1.8 - Fixed the widget now it is more modernized which means you can add as many widgets as you want to your sidebar! Community 
+suggestion! This has been tested in Firefox and IE and with the latest wordpress!
