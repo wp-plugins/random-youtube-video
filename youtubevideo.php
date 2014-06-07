@@ -8,7 +8,7 @@ Author: Shobba, roycegracie, zigvt85
 Author Notes: Community patch by the authors above fixed from using object to iframe and menu glitch where
 the menu was going under the video if close enough.
 Author URI: http://wordpress.org/plugins/random-youtube-video/
-Version: 1.8
+Version: 1.9
 License: GPL compatible
 */
 
@@ -26,6 +26,8 @@ License: GPL compatible
 
     For a copy of the GNU General Public License see <http://www.gnu.org/licenses/>.
 */
+
+require_once("widget.php");
 
 function addrowfunc()
 {
@@ -114,83 +116,6 @@ function ryv_adminmenu() {
 }
 add_action('admin_menu', 'ryv_adminmenu');
 
-function ryv_widget(){
-	if ( !function_exists('register_sidebar_widget') || !function_exists('register_widget_control') )
-		return;
-	function ryv_mywidget($args) {
-		global $wpdb;
-
-		extract($args);
-		$options = get_option('ryv_mywidget');
-
-		$title = $options['title']; $autoplay = $options['autoplay']; $width = $options['width'];
-		if($width==0 or $width==''){$width=170;} $height = $width/1.197; $height=round($height);
-
-		echo $before_widget;
-		if($title != '') echo $before_title . $title . $after_title;
-
-		$vids = $wpdb->get_results("SELECT * FROM `".$wpdb->prefix."randomyoutube`");
-		if($wpdb->num_rows == 0){echo "<div align='center'>no video</div>";}
-		else{
-		$video = $wpdb->get_results("SELECT * FROM `".$wpdb->prefix."randomyoutube` ORDER BY RAND() LIMIT 1");
-		$url=$video[0]->url; $name=$video[0]->titel;
-		?>
-		<div align="left">
-			<font style="font-size:10px;"><? echo $name; ?><br /></font>
-			<iframe width="<?=$width?>" height="<?=$height?>" src="//www.youtube.com/embed/<? echo $url; ?>?<?=$autoplay?>" frameborder="0" allowfullscreen></iframe>
-			<? if($options['link']==1){?><br /><a href="http://wordpress.org/plugins/random-youtube-video/" target="_blank">RYV plugin by Shobba</a><?}?>
-		</div>
-
-<?		}
-		echo $after_widget;
-	}
-	function ryv_mywidget_control() {
-		$options = $newoptions = get_option('ryv_mywidget');
-		if ( $_POST['ryv_submit'] ) {
-			$newoptions['title'] = strip_tags(stripslashes($_POST['ryv_title']));
-			$newoptions['autoplay'] = strip_tags(stripslashes($_POST['ryv_autoplay']));
-			$newoptions['width'] = strip_tags(stripslashes($_POST['ryv_width']));
-			$newoptions['link'] = strip_tags(stripslashes($_POST['ryv_link']));
-		}
-		if ( $options != $newoptions ) {
-			$options = $newoptions;
-			update_option('ryv_mywidget', $options);
-		}
-		$title = htmlspecialchars($options['title'], ENT_QUOTES);
-		$autoplay = htmlspecialchars($options['autoplay'], ENT_QUOTES);
-		$width = htmlspecialchars($options['width'], ENT_QUOTES);
-		?>
-		<p>
-			<label for="ryv_title"><?php _e('Title:'); ?>
-				<input style="width: 200px;" id="ryv_title" name="ryv_title" type="text" value="<?=$options['title']; ?>" />
-			</label>
-		</p>
-		<p>
-			<label for="ryv_autoplay"><?php _e('AutoPlay:'); ?>
-				<input style="width: 200px;" id="ryv_autoplay" name="ryv_autoplay" type="text" value="<?=$options['autoplay']; ?>" />
-				<br />
-				Add the following to enable autoplay <strong> rel=0&autoplay=1 </strong>
-				<br />
-				To disable it just remove it and save and repeat! 			
-			</label>
-		</p>
-		<p>
-			<label for="ryv_width"><?php _e('Width of video:'); ?>
-				<input style="width: 50px;" id="ryv_width" name="ryv_width" type="text" value="<?=$options['width']; ?>" /> ( px )
-			</label>
-		</p>		
-		<p>
-			<label for="ryv_link">
-				<input type="Checkbox" name="ryv_link" id="ryv_link" value="1" <? if($options['link']==1){echo "checked";}?>> Show link to plugin?
-			</label>
-		</p>
-		<p style="text-align:right;margin-right:40px;"><?php echo $error; ?></p>
-		<input type="hidden" id="ryv_submit" name="ryv_submit" value="1" />
-		<?
-	}
-	register_sidebar_widget('Random YT Video', 'ryv_mywidget');
-	register_widget_control('Random YT Video', 'ryv_mywidget_control');
-}
 function ryv_install(){
 	global $wpdb;
 
@@ -209,7 +134,6 @@ function ryv_install(){
 	}
 }
 
-add_action('plugins_loaded', 'ryv_widget');
 register_activation_hook(__FILE__,'ryv_install');
 //if ($_REQUEST['page'] == "youtubevideo.php")
     add_action('admin_head', 'addrowfunc');

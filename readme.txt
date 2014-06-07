@@ -50,3 +50,6 @@ he is more then welcome to take over again!
 were the user can add an option to enable AutoPlay or not. Tested in Firefox and IE!
 * 1.8 - Fixed the widget now it is more modernized which means you can add as many widgets as you want to your sidebar! Community 
 suggestion! This has been tested in Firefox and IE and with the latest wordpress!
+* 1.9 - Fixed the widget now it is more modernized which means you can add as many widgets as you want to your sidebar! Community 
+suggestion! This has been tested in Firefox and IE and with the latest wordpress! I also made a new page for the widget to make it
+cleaner for any developers that like to add or delete stuff :)! No more error log!
