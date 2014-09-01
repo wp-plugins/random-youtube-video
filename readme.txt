@@ -13,7 +13,7 @@ This plugin adds a sidebar widget to your wordpress, which shows a random youtub
 
 I hope you'll enjoy it, feel free to leave a comment :-)
 
-Demo: http://ryv.soslidesigns.com
+Demo: http://www.soslidesigns.com/demo
 
 This plugin is mainly community drivin now any fixes or future patches are up to you. Unless
 we can fix them. I am just keeping this plugin alive because its really good and it was pretty
