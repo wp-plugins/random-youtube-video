@@ -13,12 +13,7 @@ This plugin adds a sidebar widget to your wordpress, which shows a random youtub
 
 I hope you'll enjoy it, feel free to leave a comment :-)
 
-Demo: http://ryv.soslidesigns.com
-
-This plugin is mainly community drivin now any fixes or future patches are up to you. Unless
-we can fix them. I am just keeping this plugin alive because its really good and it was pretty
-basic to keep it up to date. Not sure what happend to the original owner. But if he comes back
-he is more then welcome to take over again!
+Demo: http://www.soslidesigns.com/demo
 
 == Installation ==
 
@@ -51,3 +46,6 @@ suggestion! This has been tested in Firefox and IE and with the latest wordpress
 the screen shot on the plugin page. Fixed height so now you can set your own custom height instead of having
 it automatically set with the width. Removed screen shots that are not needed any more save more space for users.
 Also last but not least I added a preview video on the admin page as promised.
+
+== About ==
+Test
