@@ -48,4 +48,12 @@ it automatically set with the width. Removed screen shots that are not needed an
 Also last but not least I added a preview video on the admin page as promised.
 
 == About ==
-Test
+This website is made by <a href="https://profiles.wordpress.org/shobba/">Shobba</a>. He has been
+MIA and so I contacted WordPress and asked if I could take it over. Ever since the plugin has been
+updated. 
+
+This plugin has been fixed by the community as well with their patches I have added them into the plugin
+it self and I have also upgraded the admin page hopefully its a bit more visual for people. 2.0 may be the
+last big update for awhile until we get more ideas from the community and so on.
+
+Enjoy the plugin!
