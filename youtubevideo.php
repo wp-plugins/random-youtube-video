@@ -38,7 +38,7 @@ function addrowfunc()
 		function newrow(last, obj){
 			var latestid = last;
 			tb = document.getElementById("asd");
-			var inn2 = '<table width="100%"><tr><th><input type="Text" name="titel['+latestid+']" value="" size="50"></th><th><input type="Text" name="url['+latestid+']" value="" size="50"></th></tr></table>';
+			var inn2 = '<div style="width:100%"><strong>Title:</strong> <input type="Text" name="titel['+latestid+']" value="" size="35"><strong>Code:</strong> <input type="Text" name="url['+latestid+']" value="" size="35"></div>';
 			tb.innerHTML += inn2;
 			/*
 			tb = document.getElementById("greattable");
@@ -74,39 +74,45 @@ function ryv_adminpage(){
 			$message = '<div class="updated"><p><strong>Saved.</strong></p></div>';
 		}
 	}?>
-	<div class="wrap">
+	<div style="width:1700px;margin-left:auto;margin-right:auto;">
 		<?=$message?>
 		<h2>Random YouTube Video Management</h2>
 		<form name="ryv" method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
 			<fieldset class="options">
 				<legend>YouTube Video List</legend>
-				<center>
-				To delete one entry just delete its url and click "Save"
-				<table width="80%" cellspacing="2" cellpadding="3" class="editform" id="greattable">
-					<tr style="background-color:#464646;color:white;">
-						<th style="text-align: center;">Video Title (Optional)</th>
-						<th style="text-align: center;">Video ID (From Embed Code)<br>(looks like: j9c5N2HzaHY)</th>
-					</tr>
+				<div style="text-align:right;">
+					To delete one entry just delete its url and click "Save"
+				</div>
+				<div class="editform" id="greattable">
+				<div style="width:100%;background-color:#464646;color:#FFF;">
+					<div style="text-align:center;">Your YouTube video code (looks like: <strong>j9c5N2HzaHY</strong>)</div>
+				</div>
 					<?
 					$vids = $wpdb->get_results("SELECT * FROM `".$wpdb->prefix."randomyoutube` ORDER BY id");
 					foreach ($vids as $vid){
 						$letzte_id = $vid->id;
 						?>
-					<tr>
-						<th style="text-align: center;"><input type="Text" name="titel[<?=$vid->id?>]" value="<?=$vid->titel?>" size="50"></th>
-						<th style="text-align: center;"><input type="Text" name="url[<?=$vid->id?>]" value="<?=$vid->url?>" size="50"></th>
-					</tr>
+					<div style="text-align:right;">
+					<div style="margin-right:645px;">
+						<iframe width="300" height="200" src="//www.youtube.com/embed/<?=$vid->url?>" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<br />
+					<strong>Title:</strong><input type="Text" name="titel[<?=$vid->id?>]" value="<?=$vid->titel?>" size="50">
+					<strong>Code:</strong><input type="Text" name="url[<?=$vid->id?>]" value="<?=$vid->url?>" size="50">
+					</div>
+					<br />
 					<?
 					}
 					?>
-				</table><table width="80%" cellspacing="2" cellpadding="3" class="editform"><tr><td id="asd"></td></tr></table>
-				<table width="80%" cellspacing="2" cellpadding="3" class="editform">
-					<tr>
-						<th colspan="2" style="text-align: left;"><input class="button" type="button" name="addrow_button" value="+ add row" onClick="return newrow(<?=$letzte_id+1?>, this);"></th>
-					</tr>
-				</table><input class="button" type="Submit" name="ryv_submit" value="Save"></center>
+				</div>
+				<div class="editform" id="asd" style="width:80%;float:left;position:relative;z-index:9990;margin-top:-535px;"></div>
+				<div class="editform" style="width:135px;float:right;"><input class="button" type="button" name="addrow_button" value="+ add row" onClick="return newrow(<?=$letzte_id+1?>, this);"><input class="button" type="Submit" name="ryv_submit" value="Save"></div>
+				
 			</fieldset>
 		</form>
+		<div style="text-align:center;">
+			<strong>Maintained and Coded By:</strong> <a href="http://www.soslidesigns.com" target="_blank">So Sli Designs</a>
+		</div>
 	</div>
 	<?
 }
@@ -126,6 +132,8 @@ function ryv_install(){
 	  url TEXT NOT NULL,
 	  titel TEXT NOT NULL,
 	  autoplay TEXT NOT NULL,
+	  width TEXT NOT NULL,
+	  height TEXT NOT NULL,
 	  UNIQUE KEY id (id)
 	);";
 

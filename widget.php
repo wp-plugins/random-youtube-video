@@ -14,8 +14,7 @@ function ryv_widget()
 		extract($args);
 		$options = get_option('ryv_mywidget');
 
-		$title = $options['title']; $autoplay = $options['autoplay']; $width = $options['width'];
-		if($width==0 or $width==''){$width=170;} $height = $width/1.197; $height=round($height);
+		$title = $options['title']; $autoplay = $options['autoplay']; $width = $options['width']; $height = $options['height'];
 
 		echo $before_widget;
 		if($title != '') echo $before_title . $title . $after_title;
@@ -41,6 +40,7 @@ function ryv_widget()
 			$newoptions['title'] = strip_tags(stripslashes($_POST['ryv_title']));
 			$newoptions['autoplay'] = strip_tags(stripslashes($_POST['ryv_autoplay']));
 			$newoptions['width'] = strip_tags(stripslashes($_POST['ryv_width']));
+			$newoptions['height'] = strip_tags(stripslashes($_POST['ryv_height']));
 			$newoptions['link'] = strip_tags(stripslashes($_POST['ryv_link']));
 		}
 		if ( $options != $newoptions ) {
@@ -50,6 +50,7 @@ function ryv_widget()
 		$title = htmlspecialchars($options['title'], ENT_QUOTES);
 		$autoplay = htmlspecialchars($options['autoplay'], ENT_QUOTES);
 		$width = htmlspecialchars($options['width'], ENT_QUOTES);
+		$height = htmlspecialchars($options['height'], ENT_QUOTES);
 		?>
 		<p>
 			<label for="ryv_title"><?php _e('Title:'); ?>
@@ -70,6 +71,11 @@ function ryv_widget()
 				<input style="width: 50px;" id="ryv_width" name="ryv_width" type="text" value="<?=$options['width']; ?>" /> ( px )
 			</label>
 		</p>		
+		<p>
+			<label for="ryv_height"><?php _e('Height of video:'); ?>
+				<input style="width: 50px;" id="ryv_height" name="ryv_height" type="text" value="<?=$options['height']; ?>" /> ( px )
+			</label>
+		</p>	
 		<p>
 			<label for="ryv_link">
 				<input type="Checkbox" name="ryv_link" id="ryv_link" value="1" <? if($options['link']==1){echo "checked";}?>> Show link to plugin?

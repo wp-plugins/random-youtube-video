@@ -13,7 +13,7 @@ This plugin adds a sidebar widget to your wordpress, which shows a random youtub
 
 I hope you'll enjoy it, feel free to leave a comment :-)
 
-Demo: http://www.soslidesigns.com/demo
+Demo: http://ryv.soslidesigns.com
 
 This plugin is mainly community drivin now any fixes or future patches are up to you. Unless
 we can fix them. I am just keeping this plugin alive because its really good and it was pretty
@@ -30,13 +30,9 @@ he is more then welcome to take over again!
 == Screenshots ==
 
 1. This is the widget in your sidebar
-2. The page in your admin area
-3. Adds widget to sidebar and enables AutoPlay feature or not!
-4. Old widget you can only drag to the sidebar once!
-5. Old widget you can only drag to the sidebar once proof!
-6. New widget you can drag over multiple times!
-7. New widget proof you can have multiple Random YT Video widgets!
-8. Published widget profile that show 2 at time or more!
+2. The widget in the admin area showing new settings!
+3. New homepage widget setup with height and autoplay.
+4. Showing the new hopefully improved Admin Page!
 
 == Changelog ==
 * 1.0 - first release. Widget can be used, videos can be managed
@@ -50,6 +46,8 @@ he is more then welcome to take over again!
 were the user can add an option to enable AutoPlay or not. Tested in Firefox and IE!
 * 1.8 - Fixed the widget now it is more modernized which means you can add as many widgets as you want to your sidebar! Community 
 suggestion! This has been tested in Firefox and IE and with the latest wordpress!
-* 1.9 - Fixed the widget now it is more modernized which means you can add as many widgets as you want to your sidebar! Community 
-suggestion! This has been tested in Firefox and IE and with the latest wordpress! I also made a new page for the widget to make it
-cleaner for any developers that like to add or delete stuff :)! No more error log!
+* 1.9 - Updated links and fixed some unkown data.
+* 2.0 - Cleaned up the entire code now in DIVS no more tables. The admin page looks a lot different now view
+the screen shot on the plugin page. Fixed height so now you can set your own custom height instead of having
+it automatically set with the width. Removed screen shots that are not needed any more save more space for users.
+Also last but not least I added a preview video on the admin page as promised.
