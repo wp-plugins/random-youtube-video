@@ -8,7 +8,7 @@ Author: Shobba, roycegracie, zigvt85
 Author Notes: Community patch by the authors above fixed from using object to iframe and menu glitch where
 the menu was going under the video if close enough.
 Author URI: http://wordpress.org/plugins/random-youtube-video/
-Version: 1.9
+Version: 2.0
 License: GPL compatible
 */
 
