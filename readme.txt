@@ -2,7 +2,7 @@
 Contributors: Shobba, zigvt85, roycegracie
 Tags: youtube, random, video, widget, sidebar
 Requires at least: 2.3
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: trunk
 
 This sidebar widget shows a random youtube video from your own list.
@@ -13,7 +13,9 @@ This plugin adds a sidebar widget to your wordpress, which shows a random youtub
 
 I hope you'll enjoy it, feel free to leave a comment :-)
 
-Demo: http://www.soslidesigns.com/demo
+<strong>Demo:</strong> http://www.soslidesigns.com/demo
+
+<strong>Tested with Windows and Linux and with the latest wordpress as of now 4.0!</strong>
 
 == Installation ==
 
@@ -25,9 +27,10 @@ Demo: http://www.soslidesigns.com/demo
 == Screenshots ==
 
 1. This is the widget in your sidebar
-2. The widget in the admin area showing new settings!
-3. New homepage widget setup with height and autoplay.
-4. Showing the new hopefully improved Admin Page!
+2. The page in your admin area
+3. Adds widget to sidebar and enables AutoPlay feature or not!
+As of 2.1 this is a new design.
+4. Now you can add more then 1 Random YouTube Widget!
 
 == Changelog ==
 * 1.0 - first release. Widget can be used, videos can be managed
@@ -41,19 +44,15 @@ Demo: http://www.soslidesigns.com/demo
 were the user can add an option to enable AutoPlay or not. Tested in Firefox and IE!
 * 1.8 - Fixed the widget now it is more modernized which means you can add as many widgets as you want to your sidebar! Community 
 suggestion! This has been tested in Firefox and IE and with the latest wordpress!
-* 1.9 - Updated links and fixed some unkown data.
+* 1.9 - Fixed the widget now it is more modernized which means you can add as many widgets as you want to your sidebar! Community 
+suggestion! This has been tested in Firefox and IE and with the latest wordpress! I also made a new page for the widget to make it
+cleaner for any developers that like to add or delete stuff :)! No more error log!
 * 2.0 - Cleaned up the entire code now in DIVS no more tables. The admin page looks a lot different now view
 the screen shot on the plugin page. Fixed height so now you can set your own custom height instead of having
 it automatically set with the width. Removed screen shots that are not needed any more save more space for users.
 Also last but not least I added a preview video on the admin page as promised.
-
-== About ==
-This plugin was made by <a href="https://profiles.wordpress.org/shobba/">Shobba</a>. He has been
-MIA and so I contacted WordPress and asked if I could take it over. Ever since the plugin has been
-updated. 
-
-This plugin has been fixed by the community as well with their patches I have added them into the plugin
-it self and I have also upgraded the admin page hopefully its a bit more visual for people. 2.0 may be the
-last big update for awhile until we get more ideas from the community and so on.
-
-Enjoy the plugin!
+* 2.1 - Added a new style sheet. So users could keep there changed colors during updates. Fixed most of the rare bugs. 
+Updated the YouTube player this has the latest iframe version. Removed auto width/height did not work that great on all 
+websites now you can choose in pixles! Updated some of the php code. This caused php errors and people who are hosted with 
+Windows could not activate the plugin. Added a checkbox for AutoPlay option instead of manually typing it in. This should
+work 100% on release tested with version 4.0 and up!

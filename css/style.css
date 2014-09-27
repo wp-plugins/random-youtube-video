@@ -1,0 +1,8 @@
+/*YouTube Video ID Link Admin Page*/
+.videoid a:link {color: #FF0000;text-decoration:none;}
+.videoid a:visited {color: #FF0000;text-decoration:none;}
+.videoid a:active {color: #FF0000;text-decoration:none;}
+.videoid a:hover {color: #CCC;text-decoration:none;}
+
+/**/
+.videowrap{background-color:#464646;color:#FFF;}

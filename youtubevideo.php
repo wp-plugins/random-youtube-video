@@ -3,12 +3,9 @@
 Plugin Name: Random YouTube Video
 Plugin URI: http://wordpress.org/plugins/random-youtube-video/
 Description: This widget shows a random youtube video from your video list in your wordpress sidebar
-Download URL: http://www.soslidesigns.com/files/random-youtube-videos.zip
 Author: Shobba, roycegracie, zigvt85
-Author Notes: Community patch by the authors above fixed from using object to iframe and menu glitch where
-the menu was going under the video if close enough.
 Author URI: http://wordpress.org/plugins/random-youtube-video/
-Version: 2.0
+Version: 2.1
 License: GPL compatible
 */
 
@@ -58,7 +55,7 @@ function addrowfunc()
 			return false;
 		}
 	</script>
-    <?
+    <?php
 //    echo "\n\t<script language='text/javascript' src='".$url."/wp-content/plugins/randomyoutubevideo/addrow.js'></script>";
 }
 function ryv_adminpage(){
@@ -83,11 +80,11 @@ function ryv_adminpage(){
 				<center>
 				To delete one entry just delete its url and click "Save"
 				<table width="80%" cellspacing="2" cellpadding="3" class="editform" id="greattable">
-					<tr style="background-color:#464646;color:white;">
+					<tr class="videowrap">
 						<th style="text-align: center;">Video Title (Optional)</th>
-						<th style="text-align: center;">Video ID (From Embed Code)<br>(looks like: j9c5N2HzaHY)</th>
+						<th style="text-align: center;">Video ID (From Embed Code)<br>(looks like: <span class="videoid"><a href="https://www.youtube.com/watch?v=096t3RyU0jY" target="_blank">096t3RyU0jY</a></span>)</th>
 					</tr>
-					<?
+					<?php
 					$vids = $wpdb->get_results("SELECT * FROM `".$wpdb->prefix."randomyoutube` ORDER BY id");
 					foreach ($vids as $vid){
 						$letzte_id = $vid->id;
@@ -96,7 +93,7 @@ function ryv_adminpage(){
 						<th style="text-align: center;"><input type="Text" name="titel[<?=$vid->id?>]" value="<?=$vid->titel?>" size="50"></th>
 						<th style="text-align: center;"><input type="Text" name="url[<?=$vid->id?>]" value="<?=$vid->url?>" size="50"></th>
 					</tr>
-					<?
+					<?php
 					}
 					?>
 				</table><table width="80%" cellspacing="2" cellpadding="3" class="editform"><tr><td id="asd"></td></tr></table>
@@ -106,9 +103,14 @@ function ryv_adminpage(){
 					</tr>
 				</table><input class="button" type="Submit" name="ryv_submit" value="Save"></center>
 			</fieldset>
+			<div style="text-align:center;">
+				<strong>Designed and Coded By:</strong> <a href="http://www.soslidesigns.com" target="_blank">So Sli Designs</a> - <strong>Orginal Coder:</strong> <a href="https://profiles.wordpress.org/shobba/" target="_blank">Shobba</a>
+				<br />
+				This plugin is now maintained by the community!
+			</div>
 		</form>
 	</div>
-	<?
+	<?php
 }
 
 function ryv_adminmenu() {
@@ -135,8 +137,15 @@ function ryv_install(){
 	dbDelta($sql);
 	}
 }
+    add_action( 'admin_enqueue_scripts', 'safely_add_stylesheet_to_admin' );
+
+    /*Add stylesheet to the page*/
+    function safely_add_stylesheet_to_admin() {
+        wp_enqueue_style( 'prefix-style', plugins_url('css/style.css', __FILE__) );
+    }
 
 register_activation_hook(__FILE__,'ryv_install');
 //if ($_REQUEST['page'] == "youtubevideo.php")
     add_action('admin_head', 'addrowfunc');
+	
 ?>
