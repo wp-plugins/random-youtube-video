@@ -56,3 +56,4 @@ Updated the YouTube player this has the latest iframe version. Removed auto widt
 websites now you can choose in pixles! Updated some of the php code. This caused php errors and people who are hosted with 
 Windows could not activate the plugin. Added a checkbox for AutoPlay option instead of manually typing it in. This should
 work 100% on release tested with version 4.0 and up!
+* 2.2 - Fixed rare bug made the video disappear I believe it had to do with the data code at the end.

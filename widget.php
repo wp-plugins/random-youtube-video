@@ -27,7 +27,7 @@ function ryv_widget()
 		?>
 		<div align="left">
 			<font style="font-size:10px;"><?php echo $name; ?><br /></font>
-			<iframe width="<?php echo $width; ?>" height="<?=$height?>" src="http://www.youtube.com/embed/<?php echo $url; ?>?<?php if($options['autoplay']==1){?>rel=0&autoplay=1<?php } ?>" frameborder="0" allowfullscreen="allowfullscreen" data-link="http://www.youtube.com/watch?v=<? echo $url; ?>?<?=$autoplay?>"></iframe>
+			<iframe width="<?php echo $width; ?>" height="<?=$height?>" src="http://www.youtube.com/embed/<?php echo $url; ?>?<?php if($options['autoplay']==1){?>rel=0&autoplay=1<?php } ?>" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 			<?php if($options['link']==1){?><br /><a href="http://wordpress.org/plugins/random-youtube-video/" target="_blank">RYV plugin by Shobba</a><?php } ?>
 		</div>
 
