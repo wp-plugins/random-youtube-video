@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/plugins/random-youtube-video/
 Description: This widget shows a random youtube video from your video list in your wordpress sidebar
 Author: Shobba, roycegracie, zigvt85
 Author URI: http://wordpress.org/plugins/random-youtube-video/
-Version: 2.2
+Version: 2.3
 License: GPL compatible
 */
 
@@ -127,6 +127,7 @@ function ryv_install(){
 	  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	  url TEXT NOT NULL,
 	  titel TEXT NOT NULL,
+	  ryv_name TEXT NOT NULL,	  
 	  autoplay TEXT NOT NULL,
 	  width TEXT NOT NULL,
 	  height TEXT NOT NULL,

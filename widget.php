@@ -14,7 +14,7 @@ function ryv_widget()
 		extract($args);
 		$options = get_option('ryv_mywidget');
 
-		$title = $options['title']; $autoplay = $options['autoplay']; $width = $options['width']; $height = $options['height'];
+		$ryv_name = $options['ryv_name']; $autoplay = $options['autoplay']; $width = $options['width']; $height = $options['height'];
 
 		echo $before_widget;
 		if($title != '') echo $before_title . $title . $after_title;
@@ -26,6 +26,8 @@ function ryv_widget()
 		$url=$video[0]->url; $name=$video[0]->titel;
 		?>
 		<div align="left">
+		<h1 class="widget-title"><?php echo $ryv_name; ?></h1>
+		<br />
 			<font style="font-size:10px;"><?php echo $name; ?><br /></font>
 			<iframe width="<?php echo $width; ?>" height="<?=$height?>" src="http://www.youtube.com/embed/<?php echo $url; ?>?<?php if($options['autoplay']==1){?>rel=0&autoplay=1<?php } ?>" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 			<?php if($options['link']==1){?><br /><a href="http://wordpress.org/plugins/random-youtube-video/" target="_blank">RYV plugin by Shobba</a><?php } ?>
@@ -38,7 +40,7 @@ function ryv_widget()
 	 function form( $instance ){
 		$options = $newoptions = get_option('ryv_mywidget');
 		if ( $_POST['ryv_submit'] ) {
-			$newoptions['title'] = strip_tags(stripslashes($_POST['ryv_title']));
+			$newoptions['ryv_name'] = strip_tags(stripslashes($_POST['ryv_name']));
 			$newoptions['autoplay'] = strip_tags(stripslashes($_POST['ryv_autoplay']));
 			$newoptions['width'] = strip_tags(stripslashes($_POST['ryv_width']));
 			$newoptions['height'] = strip_tags(stripslashes($_POST['ryv_height']));
@@ -49,15 +51,15 @@ function ryv_widget()
 			$options = $newoptions;
 			update_option('ryv_mywidget', $options);
 		}
-		$title = htmlspecialchars($options['title'], ENT_QUOTES);
+		$ryv_name = htmlspecialchars($options['ryv_name'], ENT_QUOTES);
 		$width = htmlspecialchars($options['width'], ENT_QUOTES);
 		$height = htmlspecialchars($options['height'], ENT_QUOTES);
 		
 		?>
 
 		<p>
-			<label for="ryv_title"><strong><?php _e('Title:'); ?></strong>
-				<input style="width: 200px;" id="ryv_title" name="ryv_title" type="text" value="<?=$options['title']; ?>" />
+			<label for="ryv_name"><strong><?php _e('Title:'); ?></strong>
+				<input style="width: 200px;" id="ryv_name" name="ryv_name" type="text" value="<?=$options['ryv_name']; ?>" />
 			</label>
 		</p>		
 		<p>
