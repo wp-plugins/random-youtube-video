@@ -23,7 +23,7 @@ function ryv_widget()
 		if($wpdb->num_rows == 0){echo "<div align='center'>no video</div>";}
 		else{
 		$video = $wpdb->get_results("SELECT * FROM `".$wpdb->prefix."randomyoutube` ORDER BY RAND() LIMIT 1");
-		$url=$video[0]->url; $name=$video[0]->titel;
+		$url=$video[0]->url; $name=$video[0]->name;
 		?>
 		<div align="left">
 		<h3 class="widget-title"><?php echo $ryv_name; ?></h3>
