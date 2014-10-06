@@ -26,7 +26,7 @@ function ryv_widget()
 		$url=$video[0]->url; $name=$video[0]->titel;
 		?>
 		<div align="left">
-		<h1 class="widget-title"><?php echo $ryv_name; ?></h1>
+		<h3 class="widget-title"><?php echo $ryv_name; ?></h3>
 		<br />
 			<font style="font-size:10px;"><?php echo $name; ?><br /></font>
 			<iframe width="<?php echo $width; ?>" height="<?=$height?>" src="http://www.youtube.com/embed/<?php echo $url; ?>?<?php if($options['autoplay']==1){?>rel=0&autoplay=1<?php } ?>" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
