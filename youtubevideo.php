@@ -1,14 +1,13 @@
 <?php
-/*
-Plugin Name: Random YouTube Video
-Plugin URI: http://wordpress.org/plugins/random-youtube-video/
-Description: This widget shows a random youtube video from your video list in your wordpress sidebar
-Author: Shobba, roycegracie, zigvt85
-Author URI: http://wordpress.org/plugins/random-youtube-video/
-Version: 2.3
-License: GPL compatible
-*/
-
+/**
+ * Plugin Name: Random YouTube Video
+ * Plugin URI: http://wordpress.org/plugins/random-youtube-video/
+ * Description: This widget shows a random youtube video from your video list in your wordpress sidebar
+ * Version: 2.3
+ * Author: Shobba, roycegracie, zigvt85
+ * Author URI: http://www.soslidesigns.com
+ * License: GPL
+ */
 /*  Copyright 2008  Marcel Eichhorn
 
     This program is free software; you can redistribute it and/or modify
