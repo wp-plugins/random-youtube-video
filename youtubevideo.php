@@ -3,7 +3,7 @@
  * Plugin Name: Random YouTube Video
  * Plugin URI: http://wordpress.org/plugins/random-youtube-video/
  * Description: This widget shows a random youtube video from your video list in your wordpress sidebar
- * Version: 2.3
+ * Version: 2.4
  * Author: Shobba, roycegracie, zigvt85
  * Author URI: http://www.soslidesigns.com
  * License: GPL
@@ -25,7 +25,7 @@
 
 require_once("widget.php");
 
-function addrowfunc()
+function ryv_addrowfunc()
 {
     $url = get_bloginfo('wpurl');
     echo "\n\t<!-- Added By Random YouTube Video -->\n\t";
@@ -34,20 +34,8 @@ function addrowfunc()
 		function newrow(last, obj){
 			var latestid = last;
 			tb = document.getElementById("asd");
-			var inn2 = '<table width="100%"><tr><th><input type="Text" name="titel['+latestid+']" value="" size="50"></th><th><input type="Text" name="url['+latestid+']" value="" size="50"></th></tr></table>';
+			var inn2 = '<table width="100%"><tr><th><input type="Text" name="vtitle['+latestid+']" value="" size="50"></th><th><input type="Text" name="url['+latestid+']" value="" size="50"></th></tr></table>';
 			tb.innerHTML += inn2;
-			/*
-			tb = document.getElementById("greattable");
-			tr = document.createElement("tr");
-			th1 = document.createElement("th");
-			th2 = document.createElement("th");
-
-			tb.appendChild(tr);
-			tr.appendChild(th1);
-			tr.appendChild(th2);
-
-			th1.innerHTML = '<input type="Text" name="titel['+latestid+']" value="" size="50">';
-			th2.innerHTML = '<input type="Text" name="url['+latestid+']" value="" size="50">';*/
 			latestid += 1;
 			obj.onclick = function(){newrow(latestid, obj);};
 
@@ -55,7 +43,6 @@ function addrowfunc()
 		}
 	</script>
     <?php
-//    echo "\n\t<script language='text/javascript' src='".$url."/wp-content/plugins/randomyoutubevideo/addrow.js'></script>";
 }
 function ryv_adminpage(){
 	global $wpdb;
@@ -64,14 +51,14 @@ function ryv_adminpage(){
 		if($_POST['url']){
 			foreach($_POST['url'] as $key => $con){
 				if($con){
-					$ins = $wpdb->query("INSERT INTO `".$wpdb->prefix."randomyoutube` (`id`,`url`,`titel`) VALUES (".$key.",'".$con."','".$_POST['titel'][$key]."')");
+					$ins = $wpdb->query("INSERT INTO `".$wpdb->prefix."randomyoutube` (`id`,`url`,`vtitle`) VALUES (".$key.",'".$con."','".$_POST['vtitle'][$key]."')");
 				}
 			}
 			$message = '<div class="updated"><p><strong>Saved.</strong></p></div>';
 		}
 	}?>
 	<div class="wrap">
-		<?=$message?>
+		<?php echo $message; ?>
 		<h2>Random YouTube Video Management</h2>
 		<form name="ryv" method="post" action="<?php echo $_SERVER['REQUEST_URI']; ?>">
 			<fieldset class="options">
@@ -86,11 +73,11 @@ function ryv_adminpage(){
 					<?php
 					$vids = $wpdb->get_results("SELECT * FROM `".$wpdb->prefix."randomyoutube` ORDER BY id");
 					foreach ($vids as $vid){
-						$letzte_id = $vid->id;
+						$latest_id = $vid->id;
 						?>
 					<tr>
-						<th style="text-align: center;"><input type="Text" name="titel[<?=$vid->id?>]" value="<?=$vid->titel?>" size="50"></th>
-						<th style="text-align: center;"><input type="Text" name="url[<?=$vid->id?>]" value="<?=$vid->url?>" size="50"></th>
+						<th style="text-align: center;"><input type="Text" name="vtitle[<?php echo $vid->id; ?>]" value="<?php echo $vid->vtitle; ?>" size="50"></th>
+						<th style="text-align: center;"><input type="Text" name="url[<?php echo $vid->id; ?>]" value="<?php echo $vid->url; ?>" size="50"></th>
 					</tr>
 					<?php
 					}
@@ -98,7 +85,7 @@ function ryv_adminpage(){
 				</table><table width="80%" cellspacing="2" cellpadding="3" class="editform"><tr><td id="asd"></td></tr></table>
 				<table width="80%" cellspacing="2" cellpadding="3" class="editform">
 					<tr>
-						<th colspan="2" style="text-align: left;"><input class="button" type="button" name="addrow_button" value="+ add row" onClick="return newrow(<?=$letzte_id+1?>, this);"></th>
+						<th colspan="2" style="text-align: left;"><input class="button" type="button" name="addrow_button" value="+ add row" onClick="return newrow(<?php echo $latest_id+1; ?>, this);"></th>
 					</tr>
 				</table><input class="button" type="Submit" name="ryv_submit" value="Save"></center>
 			</fieldset>
@@ -106,6 +93,8 @@ function ryv_adminpage(){
 				<strong>Designed and Coded By:</strong> <a href="http://www.soslidesigns.com" target="_blank">So Sli Designs</a> - <strong>Orginal Coder:</strong> <a href="https://profiles.wordpress.org/shobba/" target="_blank">Shobba</a>
 				<br />
 				This plugin is now maintained by the community!
+				<br />
+				<em>Tested with Windows & Linux & With The Latest PHP as of now 5.3 stable!</em>
 			</div>
 		</form>
 	</div>
@@ -117,6 +106,7 @@ function ryv_adminmenu() {
 }
 add_action('admin_menu', 'ryv_adminmenu');
 
+
 function ryv_install(){
 	global $wpdb;
 
@@ -125,8 +115,8 @@ function ryv_install(){
 	$sql = "CREATE TABLE " . $table_name . " (
 	  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	  url TEXT NOT NULL,
-	  titel TEXT NOT NULL,
-	  ryv_name TEXT NOT NULL,	  
+	  vtitle TEXT NOT NULL,
+	  wtitle TEXT NOT NULL,	  
 	  autoplay TEXT NOT NULL,
 	  width TEXT NOT NULL,
 	  height TEXT NOT NULL,
@@ -135,17 +125,18 @@ function ryv_install(){
 
 	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 	dbDelta($sql);
+	update_option( "randomyoutube", $table_name );
 	}
 }
     add_action( 'admin_enqueue_scripts', 'safely_add_stylesheet_to_admin' );
 
     /*Add stylesheet to the page*/
     function safely_add_stylesheet_to_admin() {
-        wp_enqueue_style( 'prefix-style', plugins_url('css/style.css', __FILE__) );
+        wp_enqueue_style( 'randomyoutube', plugins_url('css/style.css', __FILE__) );
     }
 
 register_activation_hook(__FILE__,'ryv_install');
 //if ($_REQUEST['page'] == "youtubevideo.php")
-    add_action('admin_head', 'addrowfunc');
+    add_action('admin_head', 'ryv_addrowfunc');
 	
 ?>

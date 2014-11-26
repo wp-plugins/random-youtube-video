@@ -14,7 +14,7 @@ function ryv_widget()
 		extract($args);
 		$options = get_option('ryv_mywidget');
 
-		$ryv_name = $options['ryv_name']; $autoplay = $options['autoplay']; $width = $options['width']; $height = $options['height'];
+		$wtitle = $options['wtitle']; $autoplay = $options['autoplay']; $width = $options['width']; $height = $options['height'];
 
 		echo $before_widget;
 		if($title != '') echo $before_title . $title . $after_title;
@@ -23,13 +23,12 @@ function ryv_widget()
 		if($wpdb->num_rows == 0){echo "<div align='center'>no video</div>";}
 		else{
 		$video = $wpdb->get_results("SELECT * FROM `".$wpdb->prefix."randomyoutube` ORDER BY RAND() LIMIT 1");
-		$url=$video[0]->url; $name=$video[0]->name;
+		$url=$video[0]->url; $vtitle=$video[0]->vtitle;
 		?>
 		<div align="left">
-		<h3 class="widget-title"><?php echo $ryv_name; ?></h3>
-		<br />
-			<font style="font-size:10px;"><?php echo $name; ?><br /></font>
-			<iframe width="<?php echo $width; ?>" height="<?=$height?>" src="http://www.youtube.com/embed/<?php echo $url; ?>?<?php if($options['autoplay']==1){?>rel=0&autoplay=1<?php } ?>" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+		<h2><?php echo $wtitle; ?></h2>
+			<font style="font-size:10px;"><?php echo $vtitle; ?><br /></font>
+			<iframe width="<?php echo $width; ?>" height="<?php echo $height; ?>" src="http://www.youtube.com/embed/<?php echo $url; ?>?<?php if($options['autoplay']==1){?>rel=0&autoplay=1<?php } ?>" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
 			<?php if($options['link']==1){?><br /><a href="http://wordpress.org/plugins/random-youtube-video/" target="_blank">RYV plugin by Shobba</a><?php } ?>
 		</div>
 
@@ -40,7 +39,7 @@ function ryv_widget()
 	 function form( $instance ){
 		$options = $newoptions = get_option('ryv_mywidget');
 		if ( $_POST['ryv_submit'] ) {
-			$newoptions['ryv_name'] = strip_tags(stripslashes($_POST['ryv_name']));
+			$newoptions['wtitle'] = strip_tags(stripslashes($_POST['ryv_wtitle']));
 			$newoptions['autoplay'] = strip_tags(stripslashes($_POST['ryv_autoplay']));
 			$newoptions['width'] = strip_tags(stripslashes($_POST['ryv_width']));
 			$newoptions['height'] = strip_tags(stripslashes($_POST['ryv_height']));
@@ -51,7 +50,7 @@ function ryv_widget()
 			$options = $newoptions;
 			update_option('ryv_mywidget', $options);
 		}
-		$ryv_name = htmlspecialchars($options['ryv_name'], ENT_QUOTES);
+		$wtitle = htmlspecialchars($options['wtitle'], ENT_QUOTES);
 		$width = htmlspecialchars($options['width'], ENT_QUOTES);
 		$height = htmlspecialchars($options['height'], ENT_QUOTES);
 		
@@ -59,15 +58,15 @@ function ryv_widget()
 
 		<p>
 			<label for="ryv_name"><strong><?php _e('Title:'); ?></strong>
-				<input style="width: 200px;" id="ryv_name" name="ryv_name" type="text" value="<?=$options['ryv_name']; ?>" />
+				<input style="width: 200px;" id="ryv_wtitle" name="ryv_wtitle" type="text" value="<?php echo $options['wtitle']; ?>" />
 			</label>
 		</p>		
 		<p>
 			<label for="ryv_width"><strong><?php _e('Width of video:'); ?></strong>
-				<input style="width: 50px;" id="ryv_width" name="ryv_width" type="text" value="<?=$options['width']; ?>" /> <em>( px )</em>
+				<input style="width: 50px;" id="ryv_width" name="ryv_width" type="text" value="<?php echo $options['width']; ?>" /> <em>( px )</em>
 			</label>
 			<label for="ryv_height"><strong><?php _e('Height of video:'); ?></strong>
-				<input style="width: 50px;" id="ryv_height" name="ryv_height" type="text" value="<?=$options['height']; ?>" /> <em>( px )</em>
+				<input style="width: 50px;" id="ryv_height" name="ryv_height" type="text" value="<?php echo $options['height']; ?>" /> <em>( px )</em>
 			</label>
 		</p>		
 		<p>

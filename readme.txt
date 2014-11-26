@@ -17,6 +17,8 @@ I hope you'll enjoy it, feel free to leave a comment :-)
 
 <strong>Tested with Windows and Linux and with the latest wordpress as of now 4.0!</strong>
 
+<strong>Update Notices:</strong> When installing an update you may need to delete the entire plugin and install a fresh copy due to name changes in the code.
+
 == Installation ==
 
 1. Upload `youtubevideo.php` to the `/wp-content/plugins/` directory
@@ -57,3 +59,5 @@ websites now you can choose in pixles! Updated some of the php code. This caused
 Windows could not activate the plugin. Added a checkbox for AutoPlay option instead of manually typing it in. This should
 work 100% on release tested with version 4.0 and up!
 * 2.2 - Fixed rare bug made the video disappear I believe it had to do with the data code at the end.
+* 2.3 - Code clean up and fixes.
+* 2.4 - More code clean up and fixes and old commented code removed. You can still find on older releases.
