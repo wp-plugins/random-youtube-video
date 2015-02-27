@@ -13,11 +13,11 @@ This plugin adds a sidebar widget to your wordpress, which shows a random youtub
 
 I hope you'll enjoy it, feel free to leave a comment :-)
 
-<strong>Demo:</strong> http://www.soslidesigns.com/demo
+<strong>Demo:</strong> Down Check ScreenShots!
 
-<strong>Tested with Windows and Linux and with the latest wordpress as of now 4.0!</strong>
+<strong>Tested with Windows and Linux and with the latest wordpress as of now 4.1!</strong>
 
-<strong>Update Notices:</strong> When installing an update you may need to delete the entire plugin and install a fresh copy due to name changes in the code.
+<strong>Upgrading Info:</strong> When updating you should be able to install as an upgrade now without having to re-install everything hopefully!
 
 == Installation ==
 
@@ -61,3 +61,5 @@ work 100% on release tested with version 4.0 and up!
 * 2.2 - Fixed rare bug made the video disappear I believe it had to do with the data code at the end.
 * 2.3 - Code clean up and fixes.
 * 2.4 - More code clean up and fixes and old commented code removed. You can still find on older releases.
+* 2.4.1 - Fixed database issue if I changed the sql names they wouldn't update. When you just upgrade the software now it should.
+I also fixed missing strings thanks to a community suggestion they were missing the following...''New big update coming this spring!
