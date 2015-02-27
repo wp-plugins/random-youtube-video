@@ -57,7 +57,7 @@ function ryv_widget()
 		?>
 
 		<p>
-			<label for="ryv_name"><strong><?php _e('Title:'); ?></strong>
+			<label for="ryv_wtitle"><strong><?php _e('Title:'); ?></strong>
 				<input style="width: 200px;" id="ryv_wtitle" name="ryv_wtitle" type="text" value="<?php echo $options['wtitle']; ?>" />
 			</label>
 		</p>		
